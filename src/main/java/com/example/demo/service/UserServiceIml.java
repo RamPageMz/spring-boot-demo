@@ -21,16 +21,16 @@ public class UserServiceIml implements UserService {
 
     @Override
     public User getUserByUsername(String useranme) {
-        System.out.println("in service impl:"+useranme);
-        Assert.notNull(useranme,"username must be not null");
-        Assert.hasLength(useranme,"username must be not empty");
+        System.out.println("in service impl:" + useranme);
+        Assert.notNull(useranme, "username must be not null");
+        Assert.hasLength(useranme, "username must be not empty");
 
         return userRepository.findByUsername(useranme);
     }
 
     @Override
     public List<User> getUserByAge(Integer age) {
-        Assert.notNull(age,"Age must not be null");
+        Assert.notNull(age, "Age must not be null");
         return userRepository.findByAge(age);
     }
 
@@ -42,5 +42,26 @@ public class UserServiceIml implements UserService {
     @Override
     public Page<User> getAllUser(UserCriteria userCriteria, Pageable pageable) {
         return null;
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public int updateUser(String username, String password) {
+        Assert.notNull(username, "updateUser:username null");
+        Assert.notNull(password, "updateUser:password null");
+        return userRepository.updateUserByUsername(username, password);
+    }
+
+    @Override
+    public int insertUser(String username, String password) {
+        Assert.notNull(username, "insertUser:username null");
+        Assert.notNull(password, "insertUser:password null");
+        User user = new User(username, password);
+        userRepository.save(user);
+        return 1;
     }
 }

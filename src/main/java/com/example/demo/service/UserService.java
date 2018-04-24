@@ -19,4 +19,13 @@ public interface UserService {
     // 根据username获取所有的user 列表
     Page<User> getAllUser(UserCriteria userCriteria, Pageable pageable);
 
+    // 获取所有的user信息，list
+    List<User> getUserList();
+
+    // 根据username更新password
+    int updateUser(String username, String password);
+
+    // 插入新的user
+    int insertUser(String username, String password);
+
 }

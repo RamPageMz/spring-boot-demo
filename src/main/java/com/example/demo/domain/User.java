@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable {
 
-    private static final long serialID=1L;
+    private static final long serialID = 1L;
 
     @Id
     @GeneratedValue
@@ -25,13 +25,13 @@ public class User implements Serializable {
     private Integer age;
 
 
-    protected User(){
+    protected User() {
 
     }
 
-    public User(String username,String password){
-        this.username=username;
-        this.password=password;
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
 
